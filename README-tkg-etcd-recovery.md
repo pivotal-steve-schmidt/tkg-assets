@@ -90,8 +90,11 @@ Login in again to the control plane node (see previous section).
 Make sure that NODE_NAME and ETCD_URL are set to the desired values.
 
 `CONTAINER_ID=$(sudo crictl ps -a --label io.kubernetes.container.name=etcd --label io.kubernetes.pod.namespace=kube-system | awk 'NR>1{r=$1} $0~/Running/{exit} END{print r}')`
+
 `alias etcdctl='sudo crictl exec "$CONTAINER_ID" etcdctl --cert /etc/kubernetes/pki/etcd/peer.crt --key /etc/kubernetes/pki/etcd/peer.key --cacert /etc/kubernetes/pki/etcd/ca.crt'`
+
 `export NODE_NAME=$(etcdctl member list | awk -F, '{print $3}')`
+
 `export ETCD_URL=$(etcdctl member list | awk -F, '{print $4}')`
 
 `etcdctl snapshot restore /var/lib/etcd/snap1.db --data-dir=/var/lib/etcd/restore --name=${NODE_NAME} --initial-advertise-peer-urls=${ETCD_URL} --initial-cluster=${NODE_NAME}=${ETCD_URL}`
