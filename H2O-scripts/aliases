@@ -1,0 +1,11 @@
+K8S_SCRIPTS_PATH=$HOME/H2O-scripts
+
+. $K8S_SCRIPTS_PATH/.secrets
+. $K8S_SCRIPTS_PATH/config
+
+alias k=kubectl
+alias kcon="kubectl config get-contexts"
+alias kuse="kubectl config use-context"
+alias ksuper="(cd $K8S_SCRIPTS_PATH && ./supervisor-login.sh)"
+alias klogin="kubectl vsphere login --insecure-skip-tls-verify --server ${SUPERVISOR} -u administrator@vsphere.local --tanzu-kubernetes-cluster-name"
+alias kevent="kubectl get events --sort-by=.metadata.creationTimestamp"

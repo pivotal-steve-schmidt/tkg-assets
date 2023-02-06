@@ -1,0 +1,33 @@
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TanzuKubernetesCluster
+metadata:
+  name: CLUSTERNAME
+  namespace: NAMESPACE
+spec:
+  distribution:
+# fullVersion: v1.20.2+vmware.1-tkg.2.3e10706
+    version: VERSION
+  settings:
+    network:
+#     cni:
+#       name: antrea
+#     pods:
+#       cidrBlocks:
+#       - 172.20.0.0/16
+#     serviceDomain: cluster.local
+#     services:
+#       cidrBlocks:
+#       - 10.96.0.0/16
+    storage:
+      classes:
+      - pacific-gold-storage-policy
+      defaultClass: pacific-gold-storage-policy
+  topology:
+    controlPlane:
+      class: best-effort-large
+      count: 1
+      storageClass: pacific-gold-storage-policy
+    workers:
+      class: best-effort-large
+      count: 2
+      storageClass: pacific-gold-storage-policy

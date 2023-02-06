@@ -1,0 +1,19 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: hello-selfsigned
+  namespace: default
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: hello-selfsigned-cert
+  namespace: default
+spec:
+  dnsNames:
+    - hello.h2o-4-2395.h2o.vmware.com
+  secretName: hello-selfsigned-cert-tls
+  issuerRef:
+    name: hello-selfsigned

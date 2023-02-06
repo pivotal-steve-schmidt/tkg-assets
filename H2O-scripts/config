@@ -1,0 +1,15 @@
+# File to change for each H2O environment and customer
+#   sourced from the scripts
+export SUPERVISOR="vc01cl01-wcp.h2o-4-####.h2o.vmware.com"    # ENV CHANGE
+export CUSTOMERNAME='Steve'                                   # CUST CHANGE mixed case and spaces
+export CUSTOMERNAMELC='steve'                                 # CUST CHANGE only lower case and -
+export NAMESPACE="steve"                                      # CUST CHANGE
+export STORAGECLASS=vc01cl01-t0compute
+export PRODCLUSTERNAME=newbiz-prod-$CUSTOMERNAMELC
+export TESTCLUSTERNAME=newbiz-test-$CUSTOMERNAMELC
+export VERSION=1.23.8                                         # v1.20.9 # 1.20.12, 1.19.16 # kubectl get tkr
+export TEMPLATE=cluster-template.yaml
+export BLOGNS=corp-blog
+export TMC_NAMESPACE="svc-tmc-c8"                             # on supervisor: kubectl get ns | grep tmc
+export TMC_MGMT_REGISTRATION_URL=""                           # ENV CHANGE
+export DOCKERUSER=demosteveschmidt
